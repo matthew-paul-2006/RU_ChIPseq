@@ -59,16 +59,19 @@ CFreq <- readSequences_AlpbyCycle["C",]
 GFreq <- readSequences_AlpbyCycle["G",]
 TFreq <- readSequences_AlpbyCycle["T",]
 toPlot <- data.frame(Count=c(AFreq,CFreq,GFreq,TFreq),
-                     Cycle=rep(1:36,4),Base=rep(c("A","C","G","T"),each=4))
+                     Cycle=rep(1:36,4),
+                     Base=rep(c("A","C","G","T"),each=4))
 
 
 ## ----mycRep1ReadsAlpByCyclePlot2,cache=TRUE,eval=FALSE,dependson="mycRep1ReadsAlpByCyclePlot",fig.height=4,fig.width=8----
 ## 
-## ggplot(toPlot,aes(y=Count,x=Cycle,colour=Base))+geom_line()
+## ggplot(toPlot,aes(y=Count,x=Cycle,colour=Base))+geom_line()+
+##   theme_bw()
 
 ## ----mycRep1ReadsAlpByCyclePlot3,cache=TRUE,echo=FALSE,dependson="mycRep1ReadsAlpByCyclePlot",fig.height=4,fig.width=8----
 
-ggplot(toPlot,aes(y=Count,x=Cycle,colour=Base))+geom_line()+ylim(150000,400000)
+ggplot(toPlot,aes(y=Count,x=Cycle,colour=Base))+geom_line()+ylim(150000,400000)+
+  theme_bw()
 
 ## ----mycRep1ReadsQByCycle,cache=TRUE,dependson="mycRep1ReadsAlpFreq"-----
 qualAsMatrix <- as(readQuality,"matrix")
@@ -78,7 +81,8 @@ qualAsMatrix[1:2,]
 boxplot(qualAsMatrix[1:1000,])
 
 ## ----out,eval=FALSE------------------------------------------------------
-## fqStreamer <- FastqStreamer("~/Downloads/ENCFF001NQP.fastq.gz", 100000)
+## fqStreamer <- FastqStreamer("~/Downloads/ENCFF001NQP.fastq.gz",
+##                             n=100000)
 
 ## ----out1,eval=FALSE-----------------------------------------------------
 ## TotalReads <- 0
@@ -102,7 +106,8 @@ BSgenome.Mmusculus.UCSC.mm10
 
 ## ----fa2,cache=FALSE,echo=TRUE-------------------------------------------
 mainChromosomes <- paste0("chr",c(1:19,"X","Y","M"))
-mainChrSeq <- lapply(mainChromosomes,function(x)BSgenome.Mmusculus.UCSC.mm10[[x]])
+mainChrSeq <- lapply(mainChromosomes,
+                     function(x)BSgenome.Mmusculus.UCSC.mm10[[x]])
 names(mainChrSeq) <- mainChromosomes
 mainChrSeqSet <- DNAStringSet(mainChrSeq)
 mainChrSeqSet
@@ -115,7 +120,8 @@ mainChrSeqSet
 ## FileName <- "filtered_ENCFF001NQP.fastq.gz"
 ## SampleName <- "Myc_Mel_1"
 ## sampleTable <- data.frame(FileName,SampleName)
-## write.table(sampleTable,file="sampleTable.txt",sep="\t",quote=FALSE,row.names = FALSE)
+## write.table(sampleTable,file="sampleTable.txt",sep="\t",
+##             quote=FALSE,row.names = FALSE)
 
 ## ----sampleTable1s, echo=FALSE,eval=TRUE---------------------------------
 FileName <- "filtered_ENCFF001NQP.fastq.gz"
@@ -145,9 +151,10 @@ data.frame(FileName,SampleName)
 ## ----mapped1, echo=TRUE,eval=FALSE---------------------------------------
 ## mappedReads <- idxstatsBam("../../../SR_Myc_Mel_rep1.bam")
 ## TotalMapped <- sum(mappedReads[,"mapped"])
-## ggplot(mappedReads,aes(x=seqnames,y=mapped))+geom_bar(stat="identity")
+## ggplot(mappedReads,aes(x=seqnames,y=mapped))+
+##   geom_bar(stat="identity")
 
-## ----mapped, echo=FALSE,eval=TRUE,fig.width=5,fig.height=5---------------
+## ----mapped, echo=FALSE,eval=TRUE,fig.width=4,fig.height=4---------------
 mappedReads <- idxstatsBam("../../../SR_Myc_Mel_rep1.bam")
 TotalMapped <- sum(mappedReads[,"mapped"])
 suppressPackageStartupMessages(library(ggplot2))
@@ -162,7 +169,8 @@ ggplot(mappedReads,aes(x=seqnames,y=mapped))+geom_bar(stat="identity")+coord_fli
 ## export.bw(forBigWig,con="SR_Myc_Mel_rep1.bw")
 
 ## ----weightedCover, echo=TRUE,eval=FALSE---------------------------------
-## forBigWig <- coverage("SR_Myc_Mel_rep1.bam",weight = (10^6)/TotalMapped)
+## forBigWig <- coverage("SR_Myc_Mel_rep1.bam",
+##                       weight = (10^6)/TotalMapped)
 ## forBigWig
 ## export.bw(forBigWig,con="SR_Myc_Mel_rep1_weighted.bw")
 
