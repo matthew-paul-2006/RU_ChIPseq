@@ -60,7 +60,7 @@ GFreq <- readSequences_AlpbyCycle["G",]
 TFreq <- readSequences_AlpbyCycle["T",]
 toPlot <- data.frame(Count=c(AFreq,CFreq,GFreq,TFreq),
                      Cycle=rep(1:36,4),
-                     Base=rep(c("A","C","G","T"),each=4))
+                     Base=rep(c("A","C","G","T"),each=36))
 
 
 ## ----mycRep1ReadsAlpByCyclePlot2,cache=TRUE,eval=FALSE,dependson="mycRep1ReadsAlpByCyclePlot",fig.height=4,fig.width=8----
