@@ -502,17 +502,15 @@ Here we expect ChIPseq signal to be stronger in 5'UTRs and promoters when compar
 
 
 ```r
-plotRegi(myQC)
+p &lt;- plotRegi(myQC)
 ```
-
-![](ChIPseq_In_Bioconductor2_files/figure-html/unnamed-chunk-5-1.png)&lt;!-- --&gt;
 
 ---
 # Quality Control - Enrichment for reads across genes.
 
 
 ```r
-plotRegi(myQC)
+p
 ```
 
 ![](ChIPseq_In_Bioconductor2_files/figure-html/unnamed-chunk-6-1.png)&lt;!-- --&gt;
@@ -827,18 +825,19 @@ The annotatePeak function accepts a GRanges object of the regions to annotate, a
 
 
 ```r
-peakAnno &lt;- annotatePeak(macsPeaks_GR, tssRegion = c(-500, 500), TxDb = TxDb.Mmusculus.UCSC.mm10.knownGene, 
-    annoDb = "org.Mm.eg.db")
+peakAnno &lt;- annotatePeak(macsPeaks_GR, tssRegion=c(-500, 500), 
+                         TxDb=TxDb.Mmusculus.UCSC.mm10.knownGene, 
+                         annoDb="org.Mm.eg.db")
 ```
 
 ```
-## &gt;&gt; preparing features information...		 2018-05-11 10:20:51 
-## &gt;&gt; identifying nearest features...		 2018-05-11 10:20:51 
-## &gt;&gt; calculating distance from peak to TSS...	 2018-05-11 10:20:53 
-## &gt;&gt; assigning genomic annotation...		 2018-05-11 10:20:53 
-## &gt;&gt; adding gene annotation...			 2018-05-11 10:21:08 
-## &gt;&gt; assigning chromosome lengths			 2018-05-11 10:21:08 
-## &gt;&gt; done...					 2018-05-11 10:21:08
+## &gt;&gt; preparing features information...		 2018-05-11 11:50:59 
+## &gt;&gt; identifying nearest features...		 2018-05-11 11:50:59 
+## &gt;&gt; calculating distance from peak to TSS...	 2018-05-11 11:50:59 
+## &gt;&gt; assigning genomic annotation...		 2018-05-11 11:50:59 
+## &gt;&gt; adding gene annotation...			 2018-05-11 11:51:00 
+## &gt;&gt; assigning chromosome lengths			 2018-05-11 11:51:01 
+## &gt;&gt; done...					 2018-05-11 11:51:01
 ```
 
 ```r
@@ -888,6 +887,13 @@ To extract this from the csAnno object the ChIPseeker functions *as.GRanges* or 
 
 ```r
 peakAnno_GR &lt;- as.GRanges(peakAnno)
+peakAnno_DF &lt;- as.data.frame(peakAnno)
+```
+
+---
+#Peak annotation
+
+```r
 peakAnno_GR[1, ]
 ```
 
@@ -909,7 +915,6 @@ peakAnno_GR[1, ]
 ##   seqinfo: 21 sequences from mm10 genome
 ```
 
-
 ---
 # Visualising peak annotation
 
@@ -921,7 +926,7 @@ Now we have the annotated peaks from ChIPseeker we can use some of ChIPseeker's 
 plotAnnoBar(peakAnno)
 ```
 
-![](ChIPseq_In_Bioconductor2_files/figure-html/unnamed-chunk-21-1.png)&lt;!-- --&gt;
+![](ChIPseq_In_Bioconductor2_files/figure-html/unnamed-chunk-22-1.png)&lt;!-- --&gt;
 
 ---
 # Visualising peak annotation
@@ -947,16 +952,16 @@ ChIPseeker can also offer a succinct plot to describe the overlap between annota
 upsetplot(peakAnno, vennpie = F)
 ```
 
-![](ChIPseq_In_Bioconductor2_files/figure-html/unnamed-chunk-23-1.png)&lt;!-- --&gt;
+![](ChIPseq_In_Bioconductor2_files/figure-html/unnamed-chunk-24-1.png)&lt;!-- --&gt;
 
 
 ---
 
 # Time for an exercise.
 
-[Link_to_exercises](../../Exercises/chipseq_part1_exercises.html)
+[Link_to_exercises](../../Exercises/chipseq_part2_exercises.html)
 
-[Link_to_answers](../../Answers/chipseq_part1_answers.html)
+[Link_to_answers](../../Answers/chipseq_part2_answers.html)
     </textarea>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({

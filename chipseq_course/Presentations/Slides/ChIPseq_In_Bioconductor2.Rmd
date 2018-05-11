@@ -401,14 +401,14 @@ We can also use ChIPQC to review where our distribution of reads across gene fea
 Here we expect ChIPseq signal to be stronger in 5'UTRs and promoters when compared to input samples.
 
 ```{r warning=FALSE,message=FALSE,fig.width=8,fig.height=4}
-plotRegi(myQC)
+p <- plotRegi(myQC)
 ```
 
 ---
 # Quality Control - Enrichment for reads across genes.
 
 ```{r warning=FALSE,fig.width=12,fig.height=6}
-plotRegi(myQC)
+p
 ```
 
 
@@ -618,7 +618,7 @@ library(ChIPseeker)
 The annotatePeak function accepts a GRanges object of the regions to annotate, a TXDB object for gene locations and a database object name to retrieve gene names from.
 
 
-```{r,eval=T,echo=T, message=FALSE,messages=FALSE, eval=T, echo=T, warning=FALSE,tidy=T}
+```{r,eval=T,echo=T, message=FALSE,messages=FALSE, eval=T, echo=T, warning=FALSE}
 peakAnno <- annotatePeak(macsPeaks_GR, tssRegion=c(-500, 500), 
                          TxDb=TxDb.Mmusculus.UCSC.mm10.knownGene, 
                          annoDb="org.Mm.eg.db")
@@ -644,9 +644,14 @@ To extract this from the csAnno object the ChIPseeker functions *as.GRanges* or 
 
 ```{r,eval=T,echo=T, eval=T, echo=T, warning=FALSE,tidy=T}
 peakAnno_GR <- as.GRanges(peakAnno)
-peakAnno_GR[1,]
+peakAnno_DF <- as.data.frame(peakAnno)
 ```
 
+---
+#Peak annotation
+```{r,eval=T,echo=T, eval=T, echo=T, warning=FALSE,tidy=T}
+peakAnno_GR[1,]
+```
 
 ---
 # Visualising peak annotation
@@ -685,8 +690,8 @@ upsetplot(peakAnno, vennpie=F)
 
 # Time for an exercise.
 
-[Link_to_exercises](../../Exercises/chipseq_part1_exercises.html)
+[Link_to_exercises](../../Exercises/chipseq_part2_exercises.html)
 
-[Link_to_answers](../../Answers/chipseq_part1_answers.html)
+[Link_to_answers](../../Answers/chipseq_part2_answers.html)
 
 
