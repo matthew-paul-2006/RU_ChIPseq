@@ -673,7 +673,7 @@ Similarly we can plot the distribution of peaks around TSS sites.
 plotDistToTSS(peakAnno)
 ```
 
-![](imgs/TSS.png)
+![](imgs/TSS1.png)
 
 ---
 # Visualising peak annotation
