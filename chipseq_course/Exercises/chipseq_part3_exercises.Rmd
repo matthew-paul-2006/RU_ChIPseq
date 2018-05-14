@@ -59,6 +59,8 @@ writeXStringSet(peaksSequences,file="commonEBFinB.fa")
 
 ```
 
+Results files from Meme-ChIP can be found [here](http://rockefelleruniversity.github.io/ebf1_motif/meme-chip.html)
+
 4. Annotate common B cell peaks to genes with TSS set as +/- 500bp
 
 ```{r instacscslsxslBscsSded}

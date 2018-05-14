@@ -137,18 +137,21 @@ $(document).ready(function () {
 <li><p>Load the ebf1 peaks for proB and B cells into R.</p></li>
 <li><p>Find peaks in B cells which we also present in proB cells.</p></li>
 <li><p>Extract the sequence 100bp (+/-50bp) around the geometric centre of these peaks, write to FASTA and submit to Meme-ChIP.</p></li>
-<li><p>Annotate common B cell peaks to genes with TSS set as +/- 500bp</p></li>
 </ol>
-<pre><code>## &gt;&gt; preparing features information...      2018-05-14 12:11:08 
-## &gt;&gt; identifying nearest features...        2018-05-14 12:11:09 
-## &gt;&gt; calculating distance from peak to TSS...   2018-05-14 12:11:09 
-## &gt;&gt; assigning genomic annotation...        2018-05-14 12:11:09 
-## &gt;&gt; adding gene annotation...          2018-05-14 12:11:22</code></pre>
+<p>Results files from Meme-ChIP can be found <a href="http://rockefelleruniversity.github.io/ebf1_motif/meme-chip.html">here</a></p>
+<ol start="4" style="list-style-type: decimal">
+<li>Annotate common B cell peaks to genes with TSS set as +/- 500bp</li>
+</ol>
+<pre><code>## &gt;&gt; preparing features information...      2018-05-14 13:04:10 
+## &gt;&gt; identifying nearest features...        2018-05-14 13:04:11 
+## &gt;&gt; calculating distance from peak to TSS...   2018-05-14 13:04:11 
+## &gt;&gt; assigning genomic annotation...        2018-05-14 13:04:11 
+## &gt;&gt; adding gene annotation...          2018-05-14 13:04:23</code></pre>
 <pre><code>## Loading required package: org.Mm.eg.db</code></pre>
 <pre><code>## </code></pre>
 <pre><code>## 'select()' returned 1:many mapping between keys and columns</code></pre>
-<pre><code>## &gt;&gt; assigning chromosome lengths           2018-05-14 12:11:23 
-## &gt;&gt; done...                    2018-05-14 12:11:23</code></pre>
+<pre><code>## &gt;&gt; assigning chromosome lengths           2018-05-14 13:04:23 
+## &gt;&gt; done...                    2018-05-14 13:04:23</code></pre>
 <ol start="5" style="list-style-type: decimal">
 <li>Create a barplot of the occurrence of differing annotations (“Promoter”, “Distal Intergenic” and “other”).</li>
 </ol>
