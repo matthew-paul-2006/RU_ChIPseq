@@ -383,7 +383,7 @@ The **limma** package is commonly used in the analysis of RNAseq and microarray 
 One very useful function is the **vennDiagram** function which allows us to plot overlaps from a logical matrix, just like the one we created.
 
 
-```{r,eval=T,echo=T, eval=T, echo=T, warning=FALSE,fig.height=4.5,fig.width=6}
+```{r,eval=T,echo=T, eval=T, echo=T, warning=FALSE,fig.height=5,fig.width=5}
 library(limma)
 vennDiagram(mcols(allPeaksSet_nR))
 ```
@@ -409,7 +409,8 @@ Since logical matrix is equivalent to a 1 or 0  matrix (1 = TRUE and 0 = FALSE),
 
 ```{r,eval=T,echo=T, eval=T, echo=T, warning=FALSE}
 ch12_HC_Peaks <- allPeaksSet_nR[
-  rowSums(as.data.frame(mcols(allPeaksSet_nR)[,c("ch12_1","ch12_2")])) >= 2
+  rowSums(as.data.frame(
+    mcols(allPeaksSet_nR)[,c("ch12_1","ch12_2")])) >= 2
   ]
 export.bed(ch12_HC_Peaks,"ch12_HC_Peaks.bed")
 ch12_HC_Peaks[1:2,]
@@ -424,11 +425,13 @@ Similarly we can define peaks which are replicated in Ch12 but absent in Mel sam
 
 ```{r,eval=T,echo=T, eval=T, echo=T, warning=FALSE}
 ch12_HC_UniquePeaks <- allPeaksSet_nR[
-  rowSums(as.data.frame(mcols(allPeaksSet_nR)[,c("ch12_1","ch12_2")])) >= 2 &
-  rowSums(as.data.frame(mcols(allPeaksSet_nR)[,c("Mel_1","Mel_2")])) == 0  
+  rowSums(as.data.frame(
+    mcols(allPeaksSet_nR)[,c("ch12_1","ch12_2")])) >= 2 &
+  rowSums(as.data.frame(
+    mcols(allPeaksSet_nR)[,c("Mel_1","Mel_2")])) == 0  
   ]
 export.bed(ch12_HC_UniquePeaks,"ch12_HC_UniquePeaks.bed")
-ch12_HC_UniquePeaks[1:2,]
+ch12_HC_UniquePeaks[1,]
 ```
 
 ---

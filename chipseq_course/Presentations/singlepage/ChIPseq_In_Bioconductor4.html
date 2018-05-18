@@ -498,20 +498,20 @@ allPeaksSet_nR[<span class="dv">1</span>:<span class="dv">2</span>,]</code></pre
 <h1>High confidence unique peaks.</h1>
 <p>Similarly we can define peaks which are replicated in Ch12 but absent in Mel samples.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ch12_HC_UniquePeaks &lt;-<span class="st"> </span>allPeaksSet_nR[
-  <span class="kw">rowSums</span>(<span class="kw">as.data.frame</span>(<span class="kw">mcols</span>(allPeaksSet_nR)[,<span class="kw">c</span>(<span class="st">&quot;ch12_1&quot;</span>,<span class="st">&quot;ch12_2&quot;</span>)])) &gt;=<span class="st"> </span><span class="dv">2</span> &amp;
-<span class="st">  </span><span class="kw">rowSums</span>(<span class="kw">as.data.frame</span>(<span class="kw">mcols</span>(allPeaksSet_nR)[,<span class="kw">c</span>(<span class="st">&quot;Mel_1&quot;</span>,<span class="st">&quot;Mel_2&quot;</span>)])) ==<span class="st"> </span><span class="dv">0</span>  
+  <span class="kw">rowSums</span>(<span class="kw">as.data.frame</span>(
+    <span class="kw">mcols</span>(allPeaksSet_nR)[,<span class="kw">c</span>(<span class="st">&quot;ch12_1&quot;</span>,<span class="st">&quot;ch12_2&quot;</span>)])) &gt;=<span class="st"> </span><span class="dv">2</span> &amp;
+<span class="st">  </span><span class="kw">rowSums</span>(<span class="kw">as.data.frame</span>(
+    <span class="kw">mcols</span>(allPeaksSet_nR)[,<span class="kw">c</span>(<span class="st">&quot;Mel_1&quot;</span>,<span class="st">&quot;Mel_2&quot;</span>)])) ==<span class="st"> </span><span class="dv">0</span>  
   ]
 <span class="kw">export.bed</span>(ch12_HC_UniquePeaks,<span class="st">&quot;ch12_HC_UniquePeaks.bed&quot;</span>)
-ch12_HC_UniquePeaks[<span class="dv">1</span>:<span class="dv">2</span>,]</code></pre></div>
-<pre><code>## GRanges object with 2 ranges and 4 metadata columns:
+ch12_HC_UniquePeaks[<span class="dv">1</span>,]</code></pre></div>
+<pre><code>## GRanges object with 1 range and 4 metadata columns:
 ##       seqnames             ranges strand |    ch12_1    ch12_2     Mel_1
 ##          &lt;Rle&gt;          &lt;IRanges&gt;  &lt;Rle&gt; | &lt;logical&gt; &lt;logical&gt; &lt;logical&gt;
 ##   [1]     chr1 [4671488, 4671836]      * |      TRUE      TRUE     FALSE
-##   [2]     chr1 [5283217, 5283439]      * |      TRUE      TRUE     FALSE
 ##           Mel_2
 ##       &lt;logical&gt;
 ##   [1]     FALSE
-##   [2]     FALSE
 ##   -------
 ##   seqinfo: 21 sequences from an unspecified genome; no seqlengths</code></pre>
 </div>

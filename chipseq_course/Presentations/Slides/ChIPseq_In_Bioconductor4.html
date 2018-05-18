@@ -646,7 +646,8 @@ Since logical matrix is equivalent to a 1 or 0  matrix (1 = TRUE and 0 = FALSE),
 
 ```r
 ch12_HC_Peaks &lt;- allPeaksSet_nR[
-  rowSums(as.data.frame(mcols(allPeaksSet_nR)[,c("ch12_1","ch12_2")])) &gt;= 2
+  rowSums(as.data.frame(
+    mcols(allPeaksSet_nR)[,c("ch12_1","ch12_2")])) &gt;= 2
   ]
 export.bed(ch12_HC_Peaks,"ch12_HC_Peaks.bed")
 ch12_HC_Peaks[1:2,]
@@ -676,23 +677,23 @@ Similarly we can define peaks which are replicated in Ch12 but absent in Mel sam
 
 ```r
 ch12_HC_UniquePeaks &lt;- allPeaksSet_nR[
-  rowSums(as.data.frame(mcols(allPeaksSet_nR)[,c("ch12_1","ch12_2")])) &gt;= 2 &amp;
-  rowSums(as.data.frame(mcols(allPeaksSet_nR)[,c("Mel_1","Mel_2")])) == 0  
+  rowSums(as.data.frame(
+    mcols(allPeaksSet_nR)[,c("ch12_1","ch12_2")])) &gt;= 2 &amp;
+  rowSums(as.data.frame(
+    mcols(allPeaksSet_nR)[,c("Mel_1","Mel_2")])) == 0  
   ]
 export.bed(ch12_HC_UniquePeaks,"ch12_HC_UniquePeaks.bed")
-ch12_HC_UniquePeaks[1:2,]
+ch12_HC_UniquePeaks[1,]
 ```
 
 ```
-## GRanges object with 2 ranges and 4 metadata columns:
+## GRanges object with 1 range and 4 metadata columns:
 ##       seqnames             ranges strand |    ch12_1    ch12_2     Mel_1
 ##          &lt;Rle&gt;          &lt;IRanges&gt;  &lt;Rle&gt; | &lt;logical&gt; &lt;logical&gt; &lt;logical&gt;
 ##   [1]     chr1 [4671488, 4671836]      * |      TRUE      TRUE     FALSE
-##   [2]     chr1 [5283217, 5283439]      * |      TRUE      TRUE     FALSE
 ##           Mel_2
 ##       &lt;logical&gt;
 ##   [1]     FALSE
-##   [2]     FALSE
 ##   -------
 ##   seqinfo: 21 sequences from an unspecified genome; no seqlengths
 ```
