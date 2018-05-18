@@ -585,7 +585,7 @@ The GRanges object contains information on the comparison made in DESeq2.
 
 Most useful it contains the the difference in IP signal as log2 fold change in **log2FoldChange**, the significance of the change in the **pvalue** column and an adjusted p-value to address multiple correction in **padj** column.
 
-```{r,eval=T,echo=T, eval=F, echo=T, warning=FALSE}
+```{r,eval=T,echo=T, eval=T, echo=T, warning=FALSE}
 MelMinusCh12[1,]
 ```
 
