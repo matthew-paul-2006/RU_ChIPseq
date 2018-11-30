@@ -1,9 +1,10 @@
 ---
-title: "ChIP-seq In Bioconductor"
+title: "ChIP-seq In Bioconductor <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>"
 author: "Rockefeller University, Bioinformatics Resource Centre"
-date: "http://rockefelleruniversity.github.io/RU_ChIPseq/"
+date: "http://rockefelleruniversity.github.io/Bioconductor_Introduction/"
 output: 
   xaringan::moon_reader:
+    css: ["default", "metropolisCustom.css", "metropolis-fontsCustom.css"]
     lib_dir: libs
     nature:
       highlightStyle: github
@@ -16,8 +17,6 @@ output:
     number_sections: false  ## if you want number sections at each table header
     theme: united  # many options for theme, this one is my favorite.
     highlight: tango  # specifies the syntax highlighting style
-
-
 ---
 
 ```{r setup, include=FALSE}
@@ -65,7 +64,7 @@ Chromatin precipitation followed by deep sequencing (**ChIP-seq**) is a well est
 Our raw ChIP-seq sequencing data will be in FASTQ format.
 
 <div align="center">
-<img src="imgs/fastq.png" alt="igv" height="400" width="600">
+<img src="imgs/fq1.png" alt="igv" height="200" width="600">
 </div>
 
 
@@ -104,7 +103,7 @@ library(ShortRead)
 
 ---
 
-# Working with raw ChIPseq sequence data.
+# Working with raw ChIPseq sequences.
 
 First we will review the raw sequencing reads using functions in the [ShortRead package.](https://bioconductor.org/packages/release/bioc/html/ShortRead.html)
 
@@ -114,7 +113,7 @@ Note when we subsample we retrieve random reads from across the entire fastQ fil
 
 ---
 
-# Working with raw ChIPseq sequence data.
+# Working with raw ChIPseq.
 
 We can subsample from a fastQ file using functions in **ShortRead** package.
 
@@ -137,7 +136,7 @@ fastq
 
 ---
 
-# Working with raw ChIPseq sequence data.
+# Working with raw ChIPseq.
 
 If we wished, we can assess information from the fastQ file using our [familiar accessor functions.](https://rockefelleruniversity.github.io/Bioconductor_Introduction/r_course/presentations/slides/FastQInBioconductor.html#13)
 
@@ -329,7 +328,7 @@ Following assessment of read quality and any read filtering we applied, we will 
 Since ChIPseq reads will align continously agaist our reference genome we can use [our genomic aligners we have seen in previous sessions.](https://rockefelleruniversity.github.io/Bioconductor_Introduction/r_course/presentations/slides/AlignmentInBioconductor.html#6) The resulting BAM file will contain aligned sequence reads for use in further analysis.
 
 <div align="center">
-<img src="imgs/sam.png" alt="igv" height="300" width="500">
+<img src="imgs/sam2.png" alt="igv" height="200" width="600">
 </div>
 
 ---
@@ -411,6 +410,7 @@ library(QuasR)
 qAlign("sampleTable.txt","BSgenome.Mmusculus.UCSC.mm10.mainChrs.fa")
 ```
 
+
 ---
 
 # Aligning ChIPseq reads with Rsubread.
@@ -444,6 +444,70 @@ align("BSgenome.Mmusculus.UCSC.mm10.mainChrs",
       type="dna",phredOffset = 64)
 ```
 
+
+---
+# Rbowtie2 ChIP-seq alignment
+
+The **QuasR** package uses Bowtie aligner under the hood to map ur reads to the genome. We have seen this is a little slow and memory hungry. 
+In latest Bioconductor releases we have a newer Bowtie version available to us the in the **Rbowtie2** package.
+
+
+```{r sampleTabless1, echo=TRUE,eval=FALSE}
+library(Rbowtie2)
+```
+
+---
+# Rbowtie2
+
+The **Rbowtie2** package requires us to first to create an index to align to.
+
+We can do this using the **bowtie2_build()** function, specifying our FASTA file and desired name of index.
+
+```{r bsgecdnoaame, echo=TRUE,eval=FALSE}
+bowtie2_build(references="BSgenome.Mmusculus.UCSC.mm10.mainChrs.fa", 
+                       bt2Index=file.path("BSgenome.Mmusculus.UCSC.mm10.mainChrs"))
+```
+
+---
+# Rbowtie2
+
+We can then align our fastq data using the **bowtie2()** function specifying our newly created index, the desired name of SAM output and an uncompressed fastq.
+
+We will need to uncompress our fastq then first. Here we use the **remove** is FALSE settin to maintain original compressed fastQ
+
+```{r bsgcdcenoaame, echo=TRUE,eval=FALSE}
+library(R.utils)
+gunzip("~/Downloads/ENCFF001NQP.fastq.gz",
+       remove=FALSE)
+
+bowtie2(bt2Index = "BSgenome.Mmusculus.UCSC.mm10.mainChrs",
+          samOutput = "ENCFF001NQP.sam",
+          seq1 = "Data/ENCFF001NQP.fq")
+```
+
+---
+# Rbowtie2
+
+Since Rbowtie2 also outputs a SAM file, we would need to need to convert to a BAM file. We can do this with the **RSamtools** **asBam()** function.
+
+```{r bsgenoaaxssme, echo=TRUE,eval=FALSE}
+bowtieBam <- asBam("ENCFF001NQP.sam")
+```
+
+
+---
+# Rbowtie2
+
+An important consideration when using Rbowtie2 is its input and output of uncompressed files.
+
+On the command line we may *stream* inputs to Rbowtie2 but in R this isnt an option (yet!)
+
+We would need to make sure we delete any tempory files created (SAM and/or uncompressed FastQ) to avoid fillin up our harddrives. We can delete files in R usin the **unlink()** function.
+
+```{r bsgxxxnoaaxssme, echo=TRUE,eval=FALSE}
+unlink("ENCFF001NQP.sam")
+unlink("Data/ENCFF001NQP.fq")
+```
 
 ---
 
