@@ -537,6 +537,16 @@ MACS2 calls peaks in a few simple steps.
 * Scan across genome and identify regions enriched compare to control samples using count based statistic.
 
 ---
+# Peak calling
+
+&lt;div align="center"&gt;
+&lt;img src="imgs/MACS2call.png" alt="offset" height="400" width="600"&gt;
+&lt;/div&gt;
+
+* Compares test window to maximum value from control and local windows to gain enrichments.
+* Calculates false discovery rate (FDR) by switching control and test and identifying for each test sample peak, how many peaks in controls had higher p values.
+    * FDR of peak = (Control peaks &lt; p-value of peak)/(Test peaks &lt; p-value of peak)
+---
 # Peak calling (Installing MACS2)
 
 ![testing](imgs/bioconda.jpg){width=50%}
@@ -838,13 +848,13 @@ peakAnno &lt;- annotatePeak(macsPeaks_GR, tssRegion=c(-500, 500),
 ```
 
 ```
-## &gt;&gt; preparing features information...		 2018-12-02 11:41:47 
-## &gt;&gt; identifying nearest features...		 2018-12-02 11:41:48 
-## &gt;&gt; calculating distance from peak to TSS...	 2018-12-02 11:41:49 
-## &gt;&gt; assigning genomic annotation...		 2018-12-02 11:41:49 
-## &gt;&gt; adding gene annotation...			 2018-12-02 11:42:04 
-## &gt;&gt; assigning chromosome lengths			 2018-12-02 11:42:04 
-## &gt;&gt; done...					 2018-12-02 11:42:04
+## &gt;&gt; preparing features information...		 2018-12-03 12:40:06 
+## &gt;&gt; identifying nearest features...		 2018-12-03 12:40:06 
+## &gt;&gt; calculating distance from peak to TSS...	 2018-12-03 12:40:08 
+## &gt;&gt; assigning genomic annotation...		 2018-12-03 12:40:08 
+## &gt;&gt; adding gene annotation...			 2018-12-03 12:40:21 
+## &gt;&gt; assigning chromosome lengths			 2018-12-03 12:40:21 
+## &gt;&gt; done...					 2018-12-03 12:40:21
 ```
 
 ```r
