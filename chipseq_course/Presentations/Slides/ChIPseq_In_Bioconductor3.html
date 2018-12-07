@@ -121,14 +121,18 @@ peakAnno &lt;- annotatePeak(macsPeaks_GR, tssRegion=c(-1000, 1000),
 ```
 
 ```
-## &gt;&gt; preparing features information...		 2018-12-07 10:56:32 
-## &gt;&gt; identifying nearest features...		 2018-12-07 10:56:33 
-## &gt;&gt; calculating distance from peak to TSS...	 2018-12-07 10:56:34 
-## &gt;&gt; assigning genomic annotation...		 2018-12-07 10:56:34 
-## &gt;&gt; adding gene annotation...			 2018-12-07 10:56:48 
-## &gt;&gt; assigning chromosome lengths			 2018-12-07 10:56:48 
-## &gt;&gt; done...					 2018-12-07 10:56:48
+## &gt;&gt; preparing features information...		 2018-12-07 11:37:25 
+## &gt;&gt; identifying nearest features...		 2018-12-07 11:37:26 
+## &gt;&gt; calculating distance from peak to TSS...	 2018-12-07 11:37:27 
+## &gt;&gt; assigning genomic annotation...		 2018-12-07 11:37:27 
+## &gt;&gt; adding gene annotation...			 2018-12-07 11:37:43 
+## &gt;&gt; assigning chromosome lengths			 2018-12-07 11:37:43 
+## &gt;&gt; done...					 2018-12-07 11:37:43
 ```
+
+# Annotation of peaks to genes.
+
+We can review the summary of peak annotation.
 
 ```r
 peakAnno
@@ -150,11 +154,13 @@ peakAnno
 ## 5  Distal Intergenic 22.8932278
 ```
 
+
+
 ---
 
 # Annotation of peaks to genes.
 
-This allowed us to produce a GRanges or data.frame of our peaks and their predicted target genes.
+Importantly this allowed us to produce a GRanges or data.frame of our peaks and their predicted target genes.
 
 
 ```r
@@ -206,7 +212,10 @@ Functional categories of genes are broadly split into three main groups.
 
 The three sub categories of gene ontology are arranged in nested, structured graph with gene sets at the top of graph representing more general terms and those at the bottom more specific terms.
 
-![](imgs/GO_Graph.png)
+&lt;div align="center"&gt;
+&lt;img src="imgs/GO_Graph.png" alt="offset" height="400" width="400"&gt;
+&lt;/div&gt;
+
 
 ---
 #Gene Ontology in Bioconductor
