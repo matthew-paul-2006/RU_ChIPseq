@@ -4,9 +4,9 @@
 [<img src="https://github.com/RockefellerUniversity/Intro_To_R_1Day/workflows/R-CMD-check-bioc/badge.svg">](https://github.com/RockefellerUniversity/Intro_To_R_1Day/actions?query=workflow%3AR-CMD-check-bioc)
 
 
-This course introduces R and statistical programming.
+This course introduces ChIPseq analysis in Bioconductor.
 
-The course consists of 2 sections, 1 on basic R data types and data input/output and a second on conditionals and looping.
+The course consists of 4 sections, 1 on basic R data types and data input/output and a second on conditionals and looping.
 Each section is presented as HTMl presentations or single page document. Exercises and answer sheets are included after all subsections to practice techniques and provide future reference examples.
 
 Course material and exercises are available to view as rendered HTML at https://rockefelleruniversity.github.io/Intro_To_R_1Day/.
