@@ -52,22 +52,22 @@ Information and files for the [Myc ChIPseq in Ch12 cell line can be found here](
 
 ---
 
-# Data
+## Data
 
 I have provided peakcalls from MACS2 following the processing steps outlined in our last session.
 
 Peak calls for Myc in MEL and Ch12 cellines can be found in 
 
-**Data/peaks/**
+**data/peaks/**
 
-* **Data/peaks/Mel_1_peaks.xls**
-* **Data/peaks/Mel_2_peaks.xls**
-* **Data/peaks/Ch12_1_peaks.xls**
-* **Data/peaks/Ch12_1_peaks.xls**
+* **data/peaks/Mel_1_peaks.xls**
+* **data/peaks/Mel_2_peaks.xls**
+* **data/peaks/Ch12_1_peaks.xls**
+* **data/peaks/Ch12_1_peaks.xls**
 
 ---
 
-# Annotation of peaks to genes.
+## Annotation of peaks to genes
 
 In our last session we reviewed how we can [identify putative transciption factor binding sites using peak calling programs such as MACS2.](https://rockefelleruniversity.github.io/RU_ChIPseq/chipseq_course/Presentations/Slides/ChIPseq_In_Bioconductor2.html#45).
 

@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "1972858066",
+    "hash" : "0",
     "id" : "7C63BCB",
-    "lastKnownWriteTime" : 1594997476,
-    "last_content_update" : 1594997476617,
+    "lastKnownWriteTime" : 1595013038,
+    "last_content_update" : 1595013038339,
     "path" : "~/Documents/Box Sync/RU/Teaching/RU_side/RU_ChIPseq/chipseq/inst/extdata/presRaw/ChIPseq_In_Bioconductor2.Rmd",
     "project_path" : "chipseq/inst/extdata/presRaw/ChIPseq_In_Bioconductor2.Rmd",
     "properties" : {
-        "cursorPosition" : "255,0",
-        "scrollLine" : "243"
+        "cursorPosition" : "556,124",
+        "scrollLine" : "546"
     },
     "read_only" : false,
     "read_only_alternatives" : [
