@@ -565,9 +565,11 @@ MACS2 calls peaks in a few simple steps.
 ---
 ## Installing MACS2
 
-![testing](imgs/bioconda.jpg){width=50%}
+Though this software is not directly available in R we can use the tools we used to install Salmon to get MACS2. 
 
 * Install conda with **[Anaconda](https://anaconda.org/)** or **[Miniconda](https://conda.io/miniconda.html)**
+
+![testing](imgs/bioconda.jpg)
 
 
 * Set bioconda channels according to the *[construction](https://bioconda.github.io/index.html#set-up-channels)*
