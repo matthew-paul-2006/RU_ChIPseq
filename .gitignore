@@ -1,3 +1,6 @@
+.Rproj.user
+.Rhistory
+.Ruserdata
 filtered_ENCFF001NQP.fastq.gz
 *.bam*
 *.vcf
